@@ -967,17 +967,18 @@ uint256 WantedByOrphan(const CBlock* pblockOrphan)
 const int DAILY_BLOCKCOUNT =  1; //1440;
 int64_t GetProofOfWorkReward(int64_t nFees)
 {
-    int64_t nSubsidy = 10 * COIN;
+    int64_t nSubsidy = 10;
 	int predPOWPeriodDays = 180;
 	
 	if(pindexBest->nHeight < DAILY_BLOCKCOUNT) {
-		nSubsidy = 1*COIN;
+		nSubsidy = 1;
 	} else {
 		for (int i=1; i<predPOWPeriodDays; i++) {
 			nSubsidy = (pindexBest->nHeight < i*DAILY_BLOCKCOUNT ?  nSubsidy - nSubsidy*i/predPOWPeriodDays : nSubsidy);
 		}
 	}
 	
+	nSubsidy*=COIN;
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfWorkReward() : create=%s nSubsidy=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nSubsidy);
 	
