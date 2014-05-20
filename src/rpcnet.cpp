@@ -2,7 +2,9 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#ifdef WIN32
 #include <winsock2.h>
+#endif
 #include "net.h"
 #include "bitcoinrpc.h"
 #include "alert.h"
