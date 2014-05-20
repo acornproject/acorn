@@ -970,7 +970,7 @@ int64_t GetProofOfWorkReward(int64_t nFees)
     int64_t nSubsidy = 10 * COIN;
 	int predPOWPeriodDays = 180;
 	
-	if(pindexBest->nHeight < 1440) {
+	if(pindexBest->nHeight < DAILY_BLOCKCOUNT) {
 		nSubsidy = 1*COIN;
 	} else {
 		for (int i=1; i<predPOWPeriodDays; i++) {
