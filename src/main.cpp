@@ -974,7 +974,7 @@ int64_t GetProofOfWorkReward(int64_t nFees)
 		nSubsidy = 1;
 	} else {
 		for (int i=1; i<predPOWPeriodDays; i++) {
-			nSubsidy = (pindexBest->nHeight < i*DAILY_BLOCKCOUNT ?  nSubsidy - nSubsidy*i/predPOWPeriodDays : nSubsidy);
+			nSubsidy = (pindexBest->nHeight > i*DAILY_BLOCKCOUNT ?  nSubsidy - nSubsidy*i/predPOWPeriodDays : nSubsidy);
 		}
 	}
 	
